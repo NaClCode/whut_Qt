@@ -1,0 +1,8 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{+w}{        }\PYG{c+c1}{//第一步}
+\PYG{+w}{        }\PYG{n}{Billing}\PYG{o}{*}\PYG{+w}{ }\PYG{n}{r}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{head}\PYG{p}{;}
+\PYG{+w}{        }\PYG{n}{Billing}\PYG{o}{*}\PYG{+w}{ }\PYG{n}{n}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{k}{new}\PYG{+w}{ }\PYG{n}{Billing}\PYG{p}{(}\PYG{n}{billing}\PYG{p}{),}\PYG{+w}{ }\PYG{o}{*}\PYG{n}{temp}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{r}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{next}\PYG{p}{;}
+\PYG{+w}{        }\PYG{c+c1}{//第二步}
+\PYG{+w}{        }\PYG{n}{r}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{next}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{n}\PYG{p}{;}
+\PYG{+w}{        }\PYG{n}{n}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{next}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{temp}\PYG{p}{;}
+\end{Verbatim}

@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>datetime</class>
+ <widget class="QDialog" name="datetime">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>555</width>
+    <height>401</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>时间</string>
+  </property>
+  <property name="windowIcon">
+   <iconset resource="../QT.qrc">
+    <normaloff>:/image/icon.png</normaloff>:/image/icon.png</iconset>
+  </property>
+  <widget class="QCalendarWidget" name="calendarWidget">
+   <property name="geometry">
+    <rect>
+     <x>30</x>
+     <y>20</y>
+     <width>491</width>
+     <height>251</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">#qt_calendar_calendarview {
+    background: #FFFFFF;
+}
+ 
+#qt_calendar_navigationbar {
+    background: #666666;
+}
+ 
+QToolButton {
+    icon-size: 30px, 30px;
+    width: 80px;
+    height: 30px;
+}
+ 
+QToolButton#qt_calendar_prevmonth {
+    width: 40px;
+	qproperty-icon: url(:/image/left.png);
+   
+}
+ 
+QToolButton#qt_calendar_nextmonth {
+    width: 40px;
+    qproperty-icon: url(:/image/right.png);
+}
+ 
+QToolButton#qt_calendar_monthbutton {
+    background: #666666;
+    padding-right: 20px;
+	color: #ffffff;
+}
+ 
+QToolButton#qt_calendar_yearbutton {
+    background: #666666;
+	color: #ffffff;
+}
+ 
+QToolButton#qt_calendar_monthbutton::menu-indicator{
+    subcontrol-origin: padding;
+    subcontrol-position: center right;
+    right: 3px;
+    width: 10px;
+}
+ 
+QAbstractItemView {
+    color: black;
+    selection-color: white;
+    selection-background-color: #646464;
+    font: 19px;
+}
+</string>
+   </property>
+  </widget>
+  <widget class="QComboBox" name="comboBox">
+   <property name="geometry">
+    <rect>
+     <x>80</x>
+     <y>290</y>
+     <width>121</width>
+     <height>31</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QComboBox" name="comboBox_2">
+   <property name="geometry">
+    <rect>
+     <x>300</x>
+     <y>290</y>
+     <width>121</width>
+     <height>31</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButton">
+   <property name="geometry">
+    <rect>
+     <x>150</x>
+     <y>340</y>
+     <width>291</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>OK</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label">
+   <property name="geometry">
+    <rect>
+     <x>230</x>
+     <y>290</y>
+     <width>31</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">font: 13pt &quot;Arial&quot;;</string>
+   </property>
+   <property name="text">
+    <string>时</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_2">
+   <property name="geometry">
+    <rect>
+     <x>450</x>
+     <y>290</y>
+     <width>31</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">font: 13pt &quot;Arial&quot;;</string>
+   </property>
+   <property name="text">
+    <string>分</string>
+   </property>
+  </widget>
+ </widget>
+ <resources>
+  <include location="../QT.qrc"/>
+ </resources>
+ <connections/>
+</ui>

@@ -1,0 +1,22 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{+w}{    }\PYG{n+nb}{cmake\PYGZus{}minimum\PYGZus{}required}\PYG{p}{(}\PYG{l+s}{VERSION}\PYG{+w}{ }\PYG{l+s}{3.0}\PYG{p}{)}
+
+\PYG{+w}{    }\PYG{n+nb}{project}\PYG{p}{(}\PYG{l+s}{dev}\PYG{p}{)}
+
+\PYG{+w}{    }\PYG{n+nb}{set}\PYG{p}{(}\PYG{l+s}{EXECUTABLE\PYGZus{}OUTPUT\PYGZus{}PATH}\PYG{+w}{ }\PYG{o}{\PYGZdl{}\PYGZob{}}\PYG{n+nv}{PROJECT\PYGZus{}SOURCE\PYGZus{}DIR}\PYG{o}{\PYGZcb{}}\PYG{l+s}{/bin}\PYG{p}{)}
+\PYG{+w}{    }\PYG{n+nb}{aux\PYGZus{}source\PYGZus{}directory}\PYG{p}{(}\PYG{l+s}{src}\PYG{+w}{ }\PYG{l+s}{SRC\PYGZus{}LIST}\PYG{p}{)}
+
+
+\PYG{+w}{    }\PYG{n+nb}{set}\PYG{p}{(}\PYG{l+s}{SRC\PYGZus{}LIST}\PYG{+w}{ }\PYG{l+s}{src/model/node/card.cpp}
+\PYG{+w}{                }\PYG{l+s}{src/model/node/billing.cpp}
+\PYG{+w}{                }\PYG{l+s}{src/model/linklist/cardlist.cpp}
+\PYG{+w}{                }\PYG{l+s}{src/model/linklist/billinglist.cpp}
+\PYG{+w}{                }\PYG{l+s}{src/view/output.cpp}
+\PYG{+w}{                }\PYG{l+s}{src/view/input.cpp}
+\PYG{+w}{                }\PYG{l+s}{src/service/service.cpp}
+\PYG{+w}{                }\PYG{l+s}{src/main.cpp}\PYG{p}{)}
+
+\PYG{+w}{    }\PYG{n+nb}{include\PYGZus{}directories}\PYG{p}{(}\PYG{l+s}{include}\PYG{p}{)}
+
+\PYG{+w}{    }\PYG{n+nb}{add\PYGZus{}executable}\PYG{p}{(}\PYG{l+s}{main}\PYG{+w}{ }\PYG{o}{\PYGZdl{}\PYGZob{}}\PYG{n+nv}{SRC\PYGZus{}LIST}\PYG{o}{\PYGZcb{}}\PYG{p}{)}
+\end{Verbatim}

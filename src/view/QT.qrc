@@ -1,0 +1,21 @@
+<RCC>
+    <qresource prefix="/">
+        <file>image/NaCl.png</file>
+        <file>image/add.png</file>
+        <file>image/query.png</file>
+        <file>image/logon.png</file>
+        <file>image/settle.png</file>
+        <file>image/exit.png</file>
+        <file>image/refund.png</file>
+        <file>image/count.png</file>
+        <file>image/recharge.png</file>
+        <file>image/icon.png</file>
+        <file>image/count_time.png</file>
+        <file>image/count_card.png</file>
+        <file>image/annul.png</file>
+        <file>image/admin.png</file>
+        <file>image/datetime.png</file>
+        <file>image/left.png</file>
+        <file>image/right.png</file>
+    </qresource>
+</RCC>

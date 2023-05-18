@@ -1,0 +1,340 @@
+classDiagram
+class Model{
+    + Cardlist cardlist;
+    + Billinglist billinglist;
+}
+
+class Billinglist{
+    - string path = billinglist_path;
+    - Billing* head;
+    - int count;
+    - float fAmount = 0;
+
+    + Billinglist();
+    + bool add(Billing billing);
+    + bool query(Billing billing);
+    + vector<string> get(time_t tStart, time_t tEnd);
+    + vector<string> get(char* aName);
+    + bool del(Billing billing);
+    + int getcount();
+    + float getfAmount();
+    + string getpath();
+    + void setfAmount(float fAomunt);
+    + void setpath(string path);
+    + bool save();
+    + ~Billinglist();
+}
+
+class Cardlist{
+    - string path = cardlist_path;
+    - Card* head;
+    - int count;
+
+    + Cardlist();
+    + bool add(Card card);
+    + bool query(Card card);
+    + bool get(Card &card);
+    + bool querycard(char* aName, vector<string>& str, int type);
+    + string getpath();
+    + bool del(Card &card);
+    + bool set(Card card, int nStatus, float fBalance, float fTolalUse);
+    + bool set_Balance(Card card, float Balance);
+    + bool set_nStatus(Card card, int nStatus);
+    + void setpath(string path);
+    + bool save();
+    + int getcount();
+    + ~Cardlist();
+}
+
+class Billing{
+    - int type;//类型, 0上机, 1下机, 2充钱, 3退钱
+    - int nStatus; //0未结算, 1结算
+    - float fBalance;//当前操作后的余额
+    - time_t t;//操作时间
+    - float fMoney;//当前操作用了多少钱
+    - char card[19];//卡号
+
+    + Billing* next = nullptr;
+    + Billing();
+    + Billing(Billing& billing);
+    + Billing(int type, int nStatus, float fBalance, float fMoney, char* card);
+    + Billing& operator = (Billing billing);
+    + bool check_time(time_t tStart, time_t tEnd);
+    + bool check_name(char* aName);
+    + bool check(Billing billing);
+    + string to_string();
+}
+
+class Card{
+    - char aName[19];
+    - char aPwd[9];
+    - int nStatus;//0未上机, 1上机
+    - time_t tStart;
+    - time_t tEnd;
+    - float fTotalUse;
+    - time_t tLast;
+    - int nUseCount;
+    - float fBalance;
+
+    + Card* next = nullptr;
+    + Card();
+    + Card(Card &card);
+    + Card(char* aName, char* aPwd, float fBalance);
+    + Card(char* aName, char* aPwd);
+    + string to_string();
+    + float get_Balance();
+    + int get_nStatus();
+    + time_t get_time();
+    + void set(int nStatus, float fBalance, float fTolalUse);
+    + void set_Balance(float aBalance);
+    + void set_nStatus(int nStatus);
+    + bool check(Card card);
+    + bool check_name(Card card);
+    + bool check_name(char* name, int types);
+    + Card& operator= (Card card);
+}
+
+class QMenu{
+    Q_OBJECT
+
+    - Ui::Form *ui;
+    - QTimer *timer;
+
+    - Qadd *qadd;
+    - Qquery *qquery;
+    - Qaddmoney *qaddmoney;
+    - Qrefund *qrefund;
+    - Qsettle *qsettle;
+    - Qlogon *qlogon;
+    - Qcount *qcount;
+    - Qwelcome *welcome;
+
+    - Model *model;
+
+    void onTimeOut();
+
+    + QMenu(Model* model, QWidget* parent = nullptr);
+    + void exec();
+    + ~QMenu();
+
+}
+
+class Qadd {
+    Q_OBJECT
+
+    - Ui::add *ui;
+    - Model *model;
+    - QMenu* qmenu;
+    - char aName[19], aPwd[9];
+
+    + Qadd(Model* model, QMenu* qmenu, QDialog* parent = nullptr);
+    + void main();
+    + ~Qadd();
+}
+
+class Qaddmoney {
+    Q_OBJECT
+
+    - Ui::addmoney *ui;
+    - Model *model;
+    - QMenu* qmenu;
+    - char aName[19], aPwd[9];
+
+    + Qaddmoeny(Model* model, QMenu* qmenu, QDialog* parent = nullptr);
+    + void main();
+    + ~Qaddmoeny();
+}
+
+class Qannul{
+    Q_OBJECT
+
+    + Qannul(Model* model, QMenu* qmenu, QDialog* parent = nullptr);
+    + void main();
+    + ~Qannul();
+
+    - Ui::annul *ui;
+    - Model *model;
+    - QMenu* qmenu;
+
+}
+
+class Qlogon{
+    Q_OBJECT
+
+    + Qlogon(Model* model, QMenu* qmenu, QDialog* parent = nullptr);
+    + void main();
+    + ~Qlogon();
+
+    - Ui::logon *ui;
+    - Model *model;
+    - QMenu* qmenu;
+}
+
+class Qquery{
+    Q_OBJECT
+
+    + Qquery(Model* model, QMenu* qmenu, QDialog* parent = nullptr);
+    + void main();
+    + ~Qquery();
+
+    - Ui::query *ui;
+    - Model *model;
+    - QMenu* qmenu;
+
+    - int types;
+}
+
+class Qrefund{
+    Q_OBJECT
+
+    + Qrefund(Model* model, QMenu* qmenu, QDialog* parent = nullptr);
+    + void main();
+    + ~Qrefund();
+
+    - Ui::refund *ui;
+    - Model *model;
+    - QMenu* qmenu;
+
+}
+
+class Qsettle{
+    Q_OBJECT
+
+    + Qsettle(Model* model, QMenu* qmenu, QDialog* parent = nullptr);
+    + void main();
+    + ~Qsettle();
+
+    - Ui::settle *ui;
+    - Model *model;
+    - QMenu* qmenu;
+
+}
+
+class Qcount_card{
+    Q_OBJECT
+
+    + Qcount_card(Model* model, Qcount* qcount, QDialog* parent = nullptr);
+    + void main();
+    + ~Qcount_card();
+
+    - Ui::count_card *ui;
+    - Model *model;
+    - Qcount* qcount;
+
+}
+
+class Qcount_time{
+    Q_OBJECT
+
+
+    + Qcount_time(Model* model, Qcount* qcount, QDialog* parent = nullptr);
+    + void main();
+    + ~Qcount_time();
+
+    - Ui::count_time *ui;
+    - Model *model;
+    - Qcount* qcount;
+
+}
+
+class Qcount_total{
+    Q_OBJECT
+
+    + Qcount_total(Model* model, Qcount* qcount, QDialog* parent = nullptr);
+    + ~Qcount_total();
+
+    - Ui::count_total *ui;
+    - Model *model;
+    - Qcount* qcount;
+}
+
+class Qcount{
+    Q_OBJECT
+
+    + Qcount(Model* model, QMenu* qmenu, QDialog* parent = nullptr);
+    + void main();
+    + ~Qcount();
+
+    - Ui::count *ui;
+    - Model *model;
+    - QMenu* qmenu;
+    - Qcount_card* count_card;
+    - Qcount_time* count_time;
+    - Qcount_total* count_total;
+    - int types;
+
+}
+
+class Qwelcome{
+    Q_OBJECT
+    
+    + Qwelcome(QDialog* parent = nullptr);
+    + void paintEvent(QPaintEvent *event);
+    + ~Qwelcome();
+
+    - Ui::Dialog *ui;
+
+
+    - bool is_drag = false;
+    - QPoint mouse_start;
+    - QPoint window_start;
+
+    - void mouseMoveEvent(QMouseEvent *event);
+    - void mousePressEvent(QMouseEvent *event);
+    - void mouseReleaseEvent(QMouseEvent *event);
+}
+
+class Qadmin{
+    Q_OBJECT
+
+    + Qadmin(Model* model, QMenu* qmenu, QDialog* parent = nullptr);
+    + void main();
+    + ~Qadmin();
+
+    - Ui::admin *ui;
+    - Model *model;
+    - QMenu* qmenu;
+    - Qcount* qcount;
+
+}
+
+
+Model *-- Cardlist
+Model *-- Billinglist
+Billinglist o-- Billing
+Cardlist o-- Card
+
+QMenu <--> Qadd
+Qadd <--> Model
+
+QMenu <--> Qaddmoney
+Qaddmoney <--> Model
+
+QMenu <--> Qannul
+Qannul <--> Model
+
+QMenu <--> Qlogon
+Qlogon <--> Model
+
+QMenu <--> Qquery
+Qquery <--> Model
+
+QMenu <--> Qrefund
+Qrefund <--> Model
+
+QMenu <--> Qsettle
+Qsettle <--> Model
+
+Qwelcome <--> QMenu
+QMenu <--> Qadmin
+
+Qadmin --> Qcount
+
+Qcount <--> Qcount_card
+Qcount_card <--> Model
+
+Qcount <--> Qcount_time
+Qcount_time <--> Model
+
+Qcount <--> Qcount_total
+Qcount_total <--> Model
